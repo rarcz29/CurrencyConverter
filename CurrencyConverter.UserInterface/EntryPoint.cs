@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CurrencyConverter
+namespace CurrencyConverter.UserInterface
 {
     class EntryPoint
     {
