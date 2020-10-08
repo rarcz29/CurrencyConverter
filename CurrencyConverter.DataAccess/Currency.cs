@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Configuration;
 using System.Globalization;
 using System.Xml.Serialization;
 
@@ -26,11 +27,14 @@ namespace CurrencyConverter.DataAccess
         {
             get
             {
-                return ExchangeRate.ToString(CultureInfo.CreateSpecificCulture("pl-PL"));
+                var cultureInfoName = ConfigurationManager.AppSettings["CultureInfoName"];
+                return ExchangeRate.ToString(CultureInfo.CreateSpecificCulture(cultureInfoName));
             }
             set
             {
-                Decimal.TryParse(value, NumberStyles.Any, CultureInfo.CreateSpecificCulture("pl-PL"),
+                var cultureInfoName = ConfigurationManager.AppSettings["CultureInfoName"];
+                Decimal.TryParse(value, NumberStyles.Any,
+                    CultureInfo.CreateSpecificCulture(cultureInfoName),
                     out decimal result);
                 ExchangeRate = result;
             }
