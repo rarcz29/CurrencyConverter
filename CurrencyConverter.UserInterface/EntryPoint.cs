@@ -6,7 +6,8 @@ namespace CurrencyConverter.UserInterface
     {
         static void Main()
         {
-            Console.WriteLine("Hello World!");
+            UserInterface ui = new UserInterface();
+            ui.DoSomething();
         }
     }
 }

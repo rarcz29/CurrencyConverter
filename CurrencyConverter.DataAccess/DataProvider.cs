@@ -1,23 +1,17 @@
 ﻿using System.IO;
 using System.Net;
 using System.Text;
-using System.Xml.Linq;
 
 namespace CurrencyConverter.DataAccess
 {
     class DataProvider
     {
-        public XElement Data { get; private set; }
-
-        public DataProvider()
-        {
-            LoadNewData();
-        }
-
-        public void LoadNewData()
+        public StringReader GetData()
         {
             var xmlResponse = GetXmlResponse("https://www.nbp.pl/kursy/xml/lasta.xml");
-            Data = GetXElementFromString(xmlResponse);
+            var stringReaderElement = GetDataAsStringReader(xmlResponse);
+
+            return stringReaderElement;
         }
 
         private string GetXmlResponse(string url)
@@ -33,6 +27,6 @@ namespace CurrencyConverter.DataAccess
             return result;
         }
 
-        private XElement GetXElementFromString(string xmlResponse) => XElement.Parse(xmlResponse);
+        private StringReader GetDataAsStringReader(string xmlString) => new StringReader(xmlString);
     }
 }
