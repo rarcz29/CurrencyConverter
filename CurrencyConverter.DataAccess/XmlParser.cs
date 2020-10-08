@@ -6,9 +6,9 @@ namespace CurrencyConverter.DataAccess
 {
     class XmlParser<T>
     {
-        public IEnumerable<T> Parse(StringReader sr)
+        public IEnumerable<T> Parse(StringReader sr, string tableName)
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Currency>), new XmlRootAttribute("tabela_kursow"));
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Currency>), new XmlRootAttribute(tableName));
             List<T> result = (List<T>)deserializer.Deserialize(sr);
 
             return result;
