@@ -4,16 +4,17 @@ using System.Xml.Serialization;
 
 namespace CurrencyConverter.DataAccess
 {
-    class XmlParser<T>
+    static class XmlParser<T>
     {
-        public IEnumerable<T> Parse(StringReader sr, string tableName)
+        public static IEnumerable<T> Parse(string data, string tableName)
         {
+            var stringReader = CreateStringReader(data);
             XmlSerializer deserializer = new XmlSerializer(typeof(List<Currency>), new XmlRootAttribute(tableName));
-            List<T> result = (List<T>)deserializer.Deserialize(sr);
+            List<T> result = (List<T>)deserializer.Deserialize(stringReader);
 
             return result;
         }
 
-        private StringReader CreateStringReader(string xmlString) => new StringReader(xmlString);
+        private static StringReader CreateStringReader(string xmlString) => new StringReader(xmlString);
     }
 }

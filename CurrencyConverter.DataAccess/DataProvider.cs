@@ -6,12 +6,10 @@ namespace CurrencyConverter.DataAccess
 {
     class DataProvider
     {
-        public StringReader GetData()
+        public string GetData()
         {
             var xmlResponse = GetXmlResponse("https://www.nbp.pl/kursy/xml/lasta.xml");
-            var stringReaderElement = GetDataAsStringReader(xmlResponse);
-
-            return stringReaderElement;
+            return xmlResponse;
         }
 
         private string GetXmlResponse(string url)
@@ -26,7 +24,5 @@ namespace CurrencyConverter.DataAccess
 
             return result;
         }
-
-        private StringReader GetDataAsStringReader(string xmlString) => new StringReader(xmlString);
     }
 }

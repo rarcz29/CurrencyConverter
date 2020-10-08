@@ -4,7 +4,7 @@ namespace CurrencyConverter.UserInterface
 {
     class UserInterface
     {
-        private DataRepository _data = new DataRepository();
+        private CurrencyRepository _data = new CurrencyRepository();
 
         public void DoSomething()
         {
