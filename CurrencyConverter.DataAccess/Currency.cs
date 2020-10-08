@@ -26,11 +26,11 @@ namespace CurrencyConverter.DataAccess
         {
             get
             {
-                return ExchangeRate.ToString(CultureInfo.CreateSpecificCulture("sv-SE"));
+                return ExchangeRate.ToString(CultureInfo.CreateSpecificCulture("pl-PL"));
             }
             set
             {
-                Decimal.TryParse(value, NumberStyles.Any, CultureInfo.CreateSpecificCulture("sv-SE"), out decimal result);
+                Decimal.TryParse(value, NumberStyles.Any, CultureInfo.CreateSpecificCulture("pl-PL"), out decimal result);
                 ExchangeRate = result;
             }
         }
