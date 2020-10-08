@@ -9,7 +9,7 @@ namespace CurrencyConverter.DataAccess
     public class Currency
     {
         [XmlElement("kod_waluty")]
-        public string Id { get; set; }
+        public string Code { get; set; }
 
         [XmlElement("nazwa_waluty")]
         public string Name { get; set; }
@@ -30,7 +30,8 @@ namespace CurrencyConverter.DataAccess
             }
             set
             {
-                Decimal.TryParse(value, NumberStyles.Any, CultureInfo.CreateSpecificCulture("pl-PL"), out decimal result);
+                Decimal.TryParse(value, NumberStyles.Any, CultureInfo.CreateSpecificCulture("pl-PL"),
+                    out decimal result);
                 ExchangeRate = result;
             }
         }

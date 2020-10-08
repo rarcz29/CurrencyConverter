@@ -9,8 +9,8 @@ namespace CurrencyConverter.DataAccess
         public static IEnumerable<T> Parse(string data, string tableName)
         {
             var stringReader = CreateStringReader(data);
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Currency>), new XmlRootAttribute(tableName));
-            List<T> result = (List<T>)deserializer.Deserialize(stringReader);
+            var deserializer = new XmlSerializer(typeof(List<Currency>), new XmlRootAttribute(tableName));
+            var result = (List<T>)deserializer.Deserialize(stringReader);
 
             return result;
         }
