@@ -1,22 +1,25 @@
-﻿using System;
-
-namespace CurrencyConverter.BusinessLogic
+﻿namespace CurrencyConverter.BusinessLogic
 {
     class Converter
     {
-        public decimal Convert()
+        public decimal Convert(decimal amount,
+                               decimal exchangeRate1, int conversionFactor1,
+                               decimal exchangeRate2, int conversionFactor2)
         {
-            throw new NotImplementedException();
+            var value1 = ConvertToPln(amount, exchangeRate1, conversionFactor1);
+            var value2 = ConvertToPln(value1, exchangeRate2, conversionFactor2);
+
+            return value2;
         }
 
-        private decimal ConvertToPln()
+        private decimal ConvertToPln(decimal amount, decimal exchangeRate, int conversionFactor)
         {
-            throw new NotImplementedException();
+            return amount / exchangeRate * conversionFactor;
         }
 
-        private decimal ConvertFromPln()
+        private decimal ConvertFromPln(decimal amount, decimal exchangeRate, int conversionFactor)
         {
-            throw new NotImplementedException();
+            return amount * exchangeRate / conversionFactor;
         }
     }
 }
