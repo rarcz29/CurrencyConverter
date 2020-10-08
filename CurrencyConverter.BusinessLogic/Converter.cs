@@ -1,4 +1,6 @@
-﻿namespace CurrencyConverter.BusinessLogic
+﻿using System;
+
+namespace CurrencyConverter.BusinessLogic
 {
     class Converter
     {
@@ -6,10 +8,10 @@
                                decimal exchangeRate1, int conversionFactor1,
                                decimal exchangeRate2, int conversionFactor2)
         {
-            var value1 = ConvertToPln(amount, exchangeRate1, conversionFactor1);
-            var value2 = ConvertToPln(value1, exchangeRate2, conversionFactor2);
+            var pln = ConvertToPln(amount, exchangeRate1, conversionFactor1);
+            var result = ConvertFromPln(pln, exchangeRate2, conversionFactor2);
 
-            return value2;
+            return Math.Round(result, 2);
         }
 
         private decimal ConvertToPln(decimal amount, decimal exchangeRate, int conversionFactor)
