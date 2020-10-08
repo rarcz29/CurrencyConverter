@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CurrencyConverter.UserInterface
+﻿namespace CurrencyConverter.UserInterface
 {
     class EntryPoint
     {

@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CurrencyConverter.DataAccess
 {
     public class CurrencyRepository
     {
         private DataProvider _dataProvider = new DataProvider();
+        private const string _TableName = "tabela_kursow";
 
         public IEnumerable<Currency> GetAll()
         {
             var dataAsString = _dataProvider.GetData();
-            var parsedData = XmlParser<Currency>.Parse(dataAsString);
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Currency>), new XmlRootAttribute("tabela_kursow"));
-            //List<Currency> result = (List<Currency>)deserializer.Deserialize(_data);
+            var parsedData = XmlParser<Currency>.Parse(dataAsString, _TableName);
 
-            //return result;
+            return parsedData;
         }
 
-        public Currency Get(string id)
+        public Currency Get(string currencyCode)
         {
-            throw new NotImplementedException();
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Currency>), new XmlRootAttribute("tabela_kursow"));
-            //ListCurrency> result = (List<Currency>)deserializer.Deserialize(_data);
+            var dataAsString = _dataProvider.GetData();
+            var parsedData = XmlParser<Currency>.Parse(dataAsString, _TableName)
+                                .Where(e => e.Code == currencyCode)
+                                .FirstOrDefault();
 
-            //return result;
+            return parsedData;
         }
-
-        public void UpdateData() => _data = _dataProvider.GetData();
     }
 }
