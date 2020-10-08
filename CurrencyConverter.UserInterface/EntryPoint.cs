@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            UserInterface ui = new UserInterface();
+            var ui = new UserInterface();
             ui.DoSomething();
         }
     }
