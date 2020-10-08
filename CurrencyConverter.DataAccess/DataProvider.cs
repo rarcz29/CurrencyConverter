@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Configuration;
+using System.IO;
 using System.Net;
 using System.Text;
 
@@ -8,7 +9,10 @@ namespace CurrencyConverter.DataAccess
     {
         public string GetData()
         {
-            var xmlResponse = GetXmlResponse("https://www.nbp.pl/kursy/xml/lasta.xml");
+            
+            var url = ConfigurationManager.AppSettings["NBPApiUrl"];
+            var xmlResponse = GetXmlResponse(url);
+
             return xmlResponse;
         }
 
@@ -17,8 +21,8 @@ namespace CurrencyConverter.DataAccess
             var request = WebRequest.Create(url) as HttpWebRequest;
             var response = request.GetResponse();
 
-            Stream receiveStream = response.GetResponseStream();
-            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+            var receiveStream = response.GetResponseStream();
+            var readStream = new StreamReader(receiveStream, Encoding.UTF8);
 
             var result = readStream.ReadToEnd();
 
