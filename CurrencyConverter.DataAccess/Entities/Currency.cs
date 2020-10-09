@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Xml.Serialization;
 
-namespace CurrencyConverter.DataAccess
+namespace CurrencyConverter.DataAccess.Entities
 {
     [XmlType("pozycja")]
     public class Currency

@@ -1,12 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using CurrencyConverter.DataAccess.Data;
+using CurrencyConverter.DataAccess.Entities;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace CurrencyConverter.DataAccess
+namespace CurrencyConverter.DataAccess.Repositories
 {
-    public class CurrencyRepository
+    public class CurrencyRepository : ICurrencyRepository
     {
-        private DataProvider _dataProvider = new DataProvider();
         private const string _TableName = "tabela_kursow";
+        private IDataProvider _dataProvider;
+
+        public CurrencyRepository(IDataProvider dataProvider)
+        {
+            _dataProvider = dataProvider;
+        }
 
         public IEnumerable<Currency> GetAll()
         {

@@ -3,13 +3,13 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace CurrencyConverter.DataAccess
+namespace CurrencyConverter.DataAccess.Data
 {
-    class DataProvider
+    public class DataProvider : IDataProvider
     {
         public string GetData()
         {
-            
+
             var url = ConfigurationManager.AppSettings["NBPApiUrl"];
             var xmlResponse = GetXmlResponse(url);
 

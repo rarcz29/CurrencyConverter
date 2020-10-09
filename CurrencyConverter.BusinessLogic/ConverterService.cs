@@ -5,8 +5,8 @@ namespace CurrencyConverter.BusinessLogic
     public static class ConverterService
     {
         public static decimal Convert(decimal amount,
-                               decimal exchangeRate1, int conversionFactor1,
-                               decimal exchangeRate2, int conversionFactor2)
+            decimal exchangeRate1, int conversionFactor1,
+            decimal exchangeRate2, int conversionFactor2)
         {
             var pln = ConvertToPln(amount, exchangeRate1, conversionFactor1);
             var result = ConvertFromPln(pln, exchangeRate2, conversionFactor2);
