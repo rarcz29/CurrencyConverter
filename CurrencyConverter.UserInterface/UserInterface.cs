@@ -1,4 +1,6 @@
-﻿using CurrencyConverter.DataAccess;
+﻿using CurrencyConverter.BusinessLogic;
+using CurrencyConverter.DataAccess;
+using System;
 
 namespace CurrencyConverter.UserInterface
 {
@@ -8,8 +10,9 @@ namespace CurrencyConverter.UserInterface
 
         public void DoSomething()
         {
-            var data = _data.GetAll();
-            System.Console.WriteLine("asdf");
+            var jpy = _data.Get("JPY");
+            var result = ConverterService.Convert(1M, 1M, 1, jpy.ExchangeRate, jpy.ConversionFactor);
+            Console.WriteLine(result);
         }
     }
 }

@@ -9,14 +9,14 @@ namespace CurrencyConverter.DataAccess
     [XmlType("pozycja")]
     public class Currency
     {
+        [XmlElement("kod_waluty")]
+        public string Id { get; set; }
+
         [XmlElement("nazwa_waluty")]
         public string Name { get; set; }
 
         [XmlElement("przelicznik")]
         public int ConversionFactor { get; set; }
-
-        [XmlElement("kod_waluty")]
-        public string Code { get; set; }
 
         [XmlIgnore]
         public decimal ExchangeRate { get; set; }

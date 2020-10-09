@@ -16,11 +16,11 @@ namespace CurrencyConverter.DataAccess
             return parsedData;
         }
 
-        public Currency Get(string currencyCode)
+        public Currency Get(string id)
         {
             var dataAsString = _dataProvider.GetData();
             var parsedData = XmlParser<Currency>.Parse(dataAsString, _TableName)
-                                .Where(e => e.Code == currencyCode)
+                                .Where(e => e.Id == id)
                                 .FirstOrDefault();
 
             return parsedData;
