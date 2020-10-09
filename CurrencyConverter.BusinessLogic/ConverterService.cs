@@ -2,9 +2,9 @@
 
 namespace CurrencyConverter.BusinessLogic
 {
-    public static class ConverterService
+    public class ConverterService : IConverterService
     {
-        public static decimal Convert(decimal amount,
+        public decimal Convert(decimal amount,
             decimal exchangeRate1, int conversionFactor1,
             decimal exchangeRate2, int conversionFactor2)
         {
@@ -14,12 +14,12 @@ namespace CurrencyConverter.BusinessLogic
             return Math.Round(result, 2);
         }
 
-        private static decimal ConvertToPln(decimal amount, decimal exchangeRate, int conversionFactor)
+        private decimal ConvertToPln(decimal amount, decimal exchangeRate, int conversionFactor)
         {
             return amount / exchangeRate * conversionFactor;
         }
 
-        private static decimal ConvertFromPln(decimal amount, decimal exchangeRate, int conversionFactor)
+        private decimal ConvertFromPln(decimal amount, decimal exchangeRate, int conversionFactor)
         {
             return amount * exchangeRate / conversionFactor;
         }

@@ -1,5 +1,5 @@
-﻿using CurrencyConverter.DataAccess.Data;
-using CurrencyConverter.DataAccess.Entities;
+﻿using CurrencyConverter.DataAccess.Entities;
+using CurrencyConverter.DataAccess.Services;
 using System.Collections.Generic;
 using System.Linq;
 

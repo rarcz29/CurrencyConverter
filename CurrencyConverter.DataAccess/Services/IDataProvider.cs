@@ -1,4 +1,4 @@
-﻿namespace CurrencyConverter.DataAccess.Data
+﻿namespace CurrencyConverter.DataAccess.Services
 {
     public interface IDataProvider
     {

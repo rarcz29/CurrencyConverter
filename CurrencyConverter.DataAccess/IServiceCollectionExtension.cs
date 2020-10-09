@@ -1,5 +1,5 @@
-﻿using CurrencyConverter.DataAccess.Connection;
-using CurrencyConverter.DataAccess.Repositories;
+﻿using CurrencyConverter.DataAccess.Repositories;
+using CurrencyConverter.DataAccess.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CurrencyConverter.DataAccess

@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace CurrencyConverter.DataAccess.Data
+namespace CurrencyConverter.DataAccess.Services
 {
     public class DataProvider : IDataProvider
     {
