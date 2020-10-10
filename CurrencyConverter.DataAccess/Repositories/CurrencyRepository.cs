@@ -19,18 +19,48 @@ namespace CurrencyConverter.DataAccess.Repositories
             _xmlParser = xmlParser;
         }
 
+        /// <exception cref="System.Web.WebException">
+        /// Thrown when there is no internet connection
+        /// </exception>
+        /// <exception cref="System.NotSupportedException">
+        /// Thrown when the GetResponseStream method is not supported
+        /// </exception>
         public void DownloadAndSaveData()
         {
-            _savedData = GetAllElements();
+            try
+            {
+                _savedData = GetAllElements();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         /// <summary>
         /// It downloads and returns data from the API
         /// </summary>
         /// <returns>parsed data from xml</returns>
+        /// <exception cref="System.Web.WebException">
+        /// Thrown when there is no internet connection
+        /// </exception>
+        /// <exception cref="System.NotSupportedException">
+        /// Thrown when the GetResponseStream method is not supported
+        /// </exception>
         public IEnumerable<Currency> GetAll()
         {
-            return GetAllElements();
+            IEnumerable<Currency> allElements;
+
+            try
+            {
+                allElements = GetAllElements();
+            }
+            catch
+            {
+                throw;
+            }
+
+            return allElements;
         }
 
         /// <summary>
@@ -38,16 +68,33 @@ namespace CurrencyConverter.DataAccess.Repositories
         /// </summary>
         /// <param name="id">ID of an entity</param>
         /// <returns>one record from parsed data</returns>
+        /// <exception cref="System.Web.WebException">
+        /// Thrown when there is no internet connection
+        /// </exception>
+        /// <exception cref="System.NotSupportedException">
+        /// Thrown when the GetResponseStream method is not supported
+        /// </exception>
         public Currency Get(string id)
         {
-            return GetAllElements()
+            IEnumerable<Currency> allElements;
+
+            try
+            {
+                allElements = GetAllElements();
+            }
+            catch
+            {
+                throw;
+            }
+
+            return allElements
                 .Where(e => e.Id == id)
                 .FirstOrDefault();
         }
 
         /// <returns>data saved in the repository</returns>
         /// <exception cref="System.NullReferenceException">
-        /// Throw when data is null
+        /// Thrown when data is null
         /// </exception>
         public IEnumerable<Currency> GetAllSavedData()
         {
@@ -55,9 +102,9 @@ namespace CurrencyConverter.DataAccess.Repositories
             {
                 CheckDataAvailability();
             }
-            catch (NullReferenceException ex)
+            catch
             {
-                throw ex;
+                throw;
             }
 
             return _savedData;
@@ -66,7 +113,7 @@ namespace CurrencyConverter.DataAccess.Repositories
         /// <param name="id">ID of an entity</param>
         /// <returns>one record from the saved data</returns>
         /// <exception cref="System.NullReferenceException">
-        /// Throw when data is null
+        /// Thrown when data is null
         /// </exception>
         public Currency GetSavedData(string id)
         {
@@ -74,9 +121,9 @@ namespace CurrencyConverter.DataAccess.Repositories
             {
                 CheckDataAvailability();
             }
-            catch (NullReferenceException ex)
+            catch
             {
-                throw ex;
+                throw;
             }
 
             return _savedData
@@ -84,9 +131,25 @@ namespace CurrencyConverter.DataAccess.Repositories
                 .FirstOrDefault();
         }
 
+        /// <exception cref="System.Web.WebException">
+        /// Thrown when there is no internet connection
+        /// </exception>
+        /// <exception cref="System.NotSupportedException">
+        /// Thrown when the GetResponseStream method is not supported
+        /// </exception>
         private IEnumerable<Currency> GetAllElements()
         {
-            var dataAsString = _dataProvider.GetData();
+            string dataAsString;
+
+            try
+            {
+                dataAsString = _dataProvider.GetData();
+            }
+            catch
+            {
+                throw;
+            }
+            
             var parsedData = _xmlParser.Parse(dataAsString, _TableName);
 
             return parsedData;
