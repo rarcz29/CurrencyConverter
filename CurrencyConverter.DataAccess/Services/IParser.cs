@@ -2,7 +2,7 @@
 
 namespace CurrencyConverter.DataAccess
 {
-    interface IXmlParser<T>
+    public interface IParser<T>
     {
         IEnumerable<T> Parse(string data, string tableName);
     }
