@@ -9,8 +9,8 @@ namespace CurrencyConverter.DataAccess.Repositories
     public class CurrencyRepository : ICurrencyRepository
     {
         private const string _TableName = "tabela_kursow";
-        private IDataProvider _dataProvider;
-        private IParser<Currency> _xmlParser;
+        private readonly IDataProvider _dataProvider;
+        private readonly IParser<Currency> _xmlParser;
         private IEnumerable<Currency> _savedData;
 
         public CurrencyRepository(IDataProvider dataProvider, IParser<Currency> xmlParser)
