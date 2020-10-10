@@ -19,26 +19,8 @@ namespace CurrencyConverter.DataAccess.Repositories
             _xmlParser = xmlParser;
         }
 
-        /// <exception cref="System.Web.WebException">
-        /// Thrown when there is no internet connection
-        /// </exception>
-        /// <exception cref="System.NotSupportedException">
-        /// Thrown when the GetResponseStream method is not supported
-        /// </exception>
-        public void DownloadAndSaveData()
-        {
-            try
-            {
-                _savedData = GetAllElements();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
         /// <summary>
-        /// It downloads and returns data from the API
+        /// It downloads, saves and returns data from the API
         /// </summary>
         /// <returns>parsed data from xml</returns>
         /// <exception cref="System.Web.WebException">
@@ -60,11 +42,11 @@ namespace CurrencyConverter.DataAccess.Repositories
                 throw;
             }
 
-            return allElements;
+            return SaveData(allElements);
         }
 
         /// <summary>
-        /// It downloads data from the API and returns one record of the given ID
+        /// It downloads data from the API, saves them and returns one record of the given ID
         /// </summary>
         /// <param name="id">ID of an entity</param>
         /// <returns>one record from parsed data</returns>
@@ -87,7 +69,9 @@ namespace CurrencyConverter.DataAccess.Repositories
                 throw;
             }
 
-            return allElements
+            // Methode saves all elements then
+            // one record is returned
+            return SaveData(allElements)
                 .Where(e => e.Id == id)
                 .FirstOrDefault();
         }
@@ -162,5 +146,7 @@ namespace CurrencyConverter.DataAccess.Repositories
                 throw new NullReferenceException("There is no saved data");
             }
         }
+
+        private IEnumerable<Currency> SaveData(IEnumerable<Currency> data) => _savedData = data;
     }
 }
