@@ -3,7 +3,7 @@ using System;
 
 namespace CurrencyConverter.UserInterface
 {
-    class UserInterface
+    class UserInterface : IUserInterface
     {
         private readonly ICurrencyRepository _data;
 
@@ -12,7 +12,7 @@ namespace CurrencyConverter.UserInterface
             _data = currencyRepository;
         }
 
-        public void DoSomething()
+        public void Run()
         {
             var eur = _data.Get("EUR");
             Console.ReadKey();

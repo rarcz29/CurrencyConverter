@@ -4,7 +4,7 @@ namespace CurrencyConverter.BusinessLogic
 {
     public static class IServiceCollectionExtension
     {
-        public static IServiceCollection AddXmlDataConnector(this IServiceCollection services)
+        public static IServiceCollection AddCurrencyConverter(this IServiceCollection services)
         {
             services.AddTransient<IConverterService, ConverterService>();
             return services;
