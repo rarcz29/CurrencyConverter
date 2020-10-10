@@ -9,6 +9,7 @@ namespace CurrencyConverter.DataAccess
         public static IServiceCollection AddXmlDataConnector(this IServiceCollection services)
         {
             services.AddTransient<IDataProvider, DataProvider>()
+                    .AddTransient(typeof(IXmlParser<>), typeof(XmlParser<>))
                     .AddSingleton<ICurrencyRepository, CurrencyRepository>();
 
             return services;

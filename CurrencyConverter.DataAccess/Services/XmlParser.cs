@@ -4,9 +4,9 @@ using System.Xml.Serialization;
 
 namespace CurrencyConverter.DataAccess
 {
-    static class XmlParser<T>
+    class XmlParser<T> : IXmlParser<T>
     {
-        public static IEnumerable<T> Parse(string data, string tableName)
+        public IEnumerable<T> Parse(string data, string tableName)
         {
             var stringReader = CreateStringReader(data);
             var deserializer = new XmlSerializer(typeof(List<T>), new XmlRootAttribute(tableName));
@@ -15,6 +15,6 @@ namespace CurrencyConverter.DataAccess
             return result;
         }
 
-        private static StringReader CreateStringReader(string xmlString) => new StringReader(xmlString);
+        private StringReader CreateStringReader(string xmlString) => new StringReader(xmlString);
     }
 }

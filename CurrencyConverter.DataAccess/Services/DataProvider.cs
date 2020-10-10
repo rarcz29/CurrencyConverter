@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CurrencyConverter.DataAccess.Services
 {
-    public class DataProvider : IDataProvider
+    class DataProvider : IDataProvider
     {
         public string GetData()
         {
