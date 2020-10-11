@@ -133,7 +133,7 @@ namespace CurrencyConverter.DataAccess.Repositories
             {
                 throw;
             }
-            
+
             var parsedData = _xmlParser.Parse(dataAsString, _TableName);
 
             return parsedData;

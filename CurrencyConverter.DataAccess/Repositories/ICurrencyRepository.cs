@@ -7,5 +7,7 @@ namespace CurrencyConverter.DataAccess.Repositories
     {
         Currency Get(string id);
         IEnumerable<Currency> GetAll();
+        IEnumerable<Currency> GetAllSavedData();
+        Currency GetSavedData(string id);
     }
 }
