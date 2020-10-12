@@ -16,6 +16,8 @@ namespace CurrencyConverter.Presentation
 
         public void Run()
         {
+            DownloadData();
+
             //decimal result = 0M;
             //List<string> currencyCodes;
 
@@ -68,15 +70,26 @@ namespace CurrencyConverter.Presentation
             //Console.WriteLine($"Obliczona wartość to: {result}");
         }
 
-        private bool CheckIfCurrencyExists(string code, IEnumerable<string> codes)
+        private void DownloadData()
         {
-            return codes.Where(c => c == code).Count() > 0;
+            try
+            {
+                _currencyBusinessLogic.DownloadAndSaveData();
+            }
+            catch
+            {
+                Console.WriteLine("Nie udało się pobrać danych. " +
+                    "Sprawdź swoje połączenie internetowe. " +
+                    "Aplikacja zostanie zamknięta.");
+            }
         }
 
-        private void ExitWrongCurrencyCode()
+        /// <returns>true if currency exists</returns>
+        private bool ReadCurrencyCode(string message)
         {
-            Console.WriteLine("Ta waluta nie istnieje");
-            Console.WriteLine("Aplikacja zostanie zamknięta");
+            Console.WriteLine(message);
+            var currencyCode = Console.ReadLine();
+            return _currencyBusinessLogic.CheckIfCurrencyExists(currencyCode);
         }
     }
 }
