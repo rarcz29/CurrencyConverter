@@ -1,5 +1,6 @@
 ﻿using CurrencyConverter.DataAccess;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CurrencyConverter.BusinessLogic
 {
@@ -16,35 +17,60 @@ namespace CurrencyConverter.BusinessLogic
 
         public decimal ConvertCurrency(decimal amount, string fromCurrencyId, string toCurrencyId)
         {
+            IEnumerable<Currency> currencies;
             Currency fromCurrency;
             Currency toCurrency;
 
             try
             {
-                fromCurrency = _currencyRepository.Get(fromCurrencyId);
-                toCurrency = _currencyRepository.Get(toCurrencyId);
+                currencies = _currencyRepository.GetAll();
+                fromCurrency = currencies.Where(c => c.Id == fromCurrencyId).FirstOrDefault();
+                toCurrency = currencies.Where(c => c.Id == toCurrencyId).FirstOrDefault();
             }
             catch
             {
-                throw;
-            }
-            
+                try
+                {
+                    fromCurrency = _currencyRepository.GetSavedData(fromCurrencyId);
+                    toCurrency = _currencyRepository.GetSavedData(toCurrencyId);
+                }
+                catch
+                {
+                    throw;
+                }
+            }            
 
             return _converter.Convert(amount, fromCurrency.ExchangeRate, fromCurrency.ConversionFactor,
                 toCurrency.ExchangeRate, toCurrency.ConversionFactor);
         }
 
-        public IEnumerable<Currency> GetAllCurrencies()
+        public IEnumerable<(string Name, string Code)> GetCurrencyNamesAndCodes()
         {
+            List<(string, string)> currencyNamesAndCodes = new List<(string, string)>();
+            IEnumerable<Currency> currencies;
+
             try
             {
-                var allCurrencies = _currencyRepository.GetAll();
-                return allCurrencies;
+                currencies = _currencyRepository.GetAll();
             }
             catch
             {
-                throw;
+                try
+                {
+                    currencies = _currencyRepository.GetAllSavedData();
+                }
+                catch
+                {
+                    throw;
+                }
             }
+
+            foreach (var currency in currencies)
+            {
+                currencyNamesAndCodes.Add((currency.Name, currency.Id));
+            }
+
+            return currencyNamesAndCodes;
         }
     }
 }
