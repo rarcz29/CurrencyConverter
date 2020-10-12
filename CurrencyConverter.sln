@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverter.DataAccess", "CurrencyConverter.DataAccess\CurrencyConverter.DataAccess.csproj", "{E1E8D12F-F397-4939-B18D-DB29E89589A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.DataAccess", "CurrencyConverter.DataAccess\CurrencyConverter.DataAccess.csproj", "{E1E8D12F-F397-4939-B18D-DB29E89589A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverter.BusinessLogic", "CurrencyConverter.BusinessLogic\CurrencyConverter.BusinessLogic.csproj", "{052FDCD9-2D90-471E-8921-1DEB9EBB7CC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.BusinessLogic", "CurrencyConverter.BusinessLogic\CurrencyConverter.BusinessLogic.csproj", "{052FDCD9-2D90-471E-8921-1DEB9EBB7CC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverter.UserInterface", "CurrencyConverter.UserInterface\CurrencyConverter.UserInterface.csproj", "{31A222A2-F436-4893-8068-F7C3F07B16C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.UserInterface", "CurrencyConverter.UserInterface\CurrencyConverter.UserInterface.csproj", "{31A222A2-F436-4893-8068-F7C3F07B16C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,18 @@ Global
 		{31A222A2-F436-4893-8068-F7C3F07B16C0}.Release|x64.Build.0 = Release|Any CPU
 		{31A222A2-F436-4893-8068-F7C3F07B16C0}.Release|x86.ActiveCfg = Release|Any CPU
 		{31A222A2-F436-4893-8068-F7C3F07B16C0}.Release|x86.Build.0 = Release|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Debug|x64.Build.0 = Debug|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Debug|x86.Build.0 = Debug|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Release|x64.ActiveCfg = Release|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Release|x64.Build.0 = Release|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Release|x86.ActiveCfg = Release|Any CPU
+		{329FCAE2-58A8-4D29-B70A-B53450F9EF0F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
