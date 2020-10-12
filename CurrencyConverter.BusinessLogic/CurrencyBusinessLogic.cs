@@ -65,5 +65,10 @@ namespace CurrencyConverter.BusinessLogic
                 throw;
             }
         }
+
+        public bool CheckIfCurrencyExists(string code)
+        {
+            return _currencyRepository.Get(code) != null;
+        }
     }
 }

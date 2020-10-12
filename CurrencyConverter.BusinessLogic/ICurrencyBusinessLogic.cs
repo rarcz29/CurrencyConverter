@@ -7,5 +7,6 @@ namespace CurrencyConverter.BusinessLogic
         void DownloadAndSaveData();
         decimal ConvertCurrency(decimal amount, string fromCurrencyId, string toCurrencyId);
         IEnumerable<(string Name, string Code)> GetCurrencyNamesAndCodes();
+        bool CheckIfCurrencyExists(string code);
     }
 }
