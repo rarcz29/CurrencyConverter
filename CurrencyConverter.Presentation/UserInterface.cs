@@ -1,5 +1,4 @@
-﻿using CurrencyConverter.Interfaces;
-using System;
+﻿using System;
 
 namespace CurrencyConverter.Presentation
 {
@@ -12,7 +11,7 @@ namespace CurrencyConverter.Presentation
         //{
         //    _converterService = converterService;
         //    Console.OutputEncoding = Encoding.UTF8;
-        }
+        //}
 
         public void Run()
         {
