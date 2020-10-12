@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CurrencyConverter.Interfaces
+namespace CurrencyConverter.DataAccess
 {
     public interface IParser<T>
     {

@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CurrencyConverter.DataAccess\CurrencyConverter.DataAccess.csproj" />
-    <ProjectReference Include="..\CurrencyConverter.Interfaces\CurrencyConverter.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

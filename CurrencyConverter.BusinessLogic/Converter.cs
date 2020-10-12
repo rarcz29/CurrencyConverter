@@ -1,5 +1,4 @@
-﻿using CurrencyConverter.Interfaces;
-using System;
+﻿using System;
 
 namespace CurrencyConverter.BusinessLogic
 {

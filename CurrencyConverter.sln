@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.DataAcces
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.BusinessLogic", "CurrencyConverter.BusinessLogic\CurrencyConverter.BusinessLogic.csproj", "{052FDCD9-2D90-471E-8921-1DEB9EBB7CC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.Interfaces", "CurrencyConverter.Interfaces\CurrencyConverter.Interfaces.csproj", "{86C103EC-4C2E-4651-BC70-D20134CF2264}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyConverter.Presentation", "CurrencyConverter.Presentation\CurrencyConverter.Presentation.csproj", "{B4556A94-3614-45AF-B83F-6ABF6EE89A45}"
 EndProject
 Global
@@ -45,18 +43,6 @@ Global
 		{052FDCD9-2D90-471E-8921-1DEB9EBB7CC5}.Release|x64.Build.0 = Release|Any CPU
 		{052FDCD9-2D90-471E-8921-1DEB9EBB7CC5}.Release|x86.ActiveCfg = Release|Any CPU
 		{052FDCD9-2D90-471E-8921-1DEB9EBB7CC5}.Release|x86.Build.0 = Release|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Debug|x64.Build.0 = Debug|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Debug|x86.Build.0 = Debug|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Release|x64.ActiveCfg = Release|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Release|x64.Build.0 = Release|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Release|x86.ActiveCfg = Release|Any CPU
-		{86C103EC-4C2E-4651-BC70-D20134CF2264}.Release|x86.Build.0 = Release|Any CPU
 		{B4556A94-3614-45AF-B83F-6ABF6EE89A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4556A94-3614-45AF-B83F-6ABF6EE89A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4556A94-3614-45AF-B83F-6ABF6EE89A45}.Debug|x64.ActiveCfg = Debug|Any CPU

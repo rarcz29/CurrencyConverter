@@ -1,4 +1,4 @@
-﻿namespace CurrencyConverter.Interfaces
+﻿namespace CurrencyConverter.BusinessLogic
 {
     public interface IConverter
     {

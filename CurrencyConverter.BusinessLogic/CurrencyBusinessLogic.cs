@@ -1,12 +1,10 @@
-﻿using CurrencyConverter.DataAccess.Entities;
-using CurrencyConverter.DataAccess.Repositories;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CurrencyConverter.BusinessLogic
 {
     class CurrencyBusinessLogic
     {
-        private readonly IRepository<ICurrency> _currencyRepository;
+        private readonly IRepository<Currency> _currencyRepository;
         private readonly IConverter _converter;
 
         public CurrencyBusinessLogic(IRepository<ICurrency> currencyRepository, IConverter converter)
