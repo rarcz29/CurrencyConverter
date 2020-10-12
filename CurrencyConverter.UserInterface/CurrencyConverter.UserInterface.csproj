@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CurrencyConverter.BusinessLogic\CurrencyConverter.BusinessLogic.csproj" />
+    <ProjectReference Include="..\CurrencyConverter.Interfaces\CurrencyConverter.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
