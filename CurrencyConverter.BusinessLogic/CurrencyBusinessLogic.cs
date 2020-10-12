@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CurrencyConverter.BusinessLogic
 {
-    class CurrencyBusinessLogic
+    class CurrencyBusinessLogic : ICurrencyBusinessLogic
     {
         private readonly IRepository<Currency> _currencyRepository;
         private readonly IConverter _converter;
@@ -38,7 +38,7 @@ namespace CurrencyConverter.BusinessLogic
                 {
                     throw;
                 }
-            }            
+            }
 
             return _converter.Convert(amount, fromCurrency.ExchangeRate, fromCurrency.ConversionFactor,
                 toCurrency.ExchangeRate, toCurrency.ConversionFactor);

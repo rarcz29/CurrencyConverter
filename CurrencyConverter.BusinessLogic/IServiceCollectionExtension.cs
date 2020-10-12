@@ -11,7 +11,8 @@ namespace CurrencyConverter.BusinessLogic
                 .AddTransient<IDataProvider, DataProvider>()
                 .AddTransient(typeof(IParser<>), typeof(XmlParser<>))
                 .AddSingleton<IRepository<Currency>, CurrencyRepository>()
-                .AddTransient<IConverter, Converter>();
+                .AddTransient<IConverter, Converter>()
+                .AddTransient<ICurrencyBusinessLogic, CurrencyBusinessLogic>();
         }
     }
 }
