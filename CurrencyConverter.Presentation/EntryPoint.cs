@@ -1,5 +1,4 @@
-﻿using CurrencyConverter.BusinessLogic;
-using CurrencyConverter.Interfaces;
+﻿using CurrencyConverter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CurrencyConverter.Presentation
@@ -8,12 +7,7 @@ namespace CurrencyConverter.Presentation
     {
         static void Main()
         {
-            // Setup dependency injection
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IUserInterface, UserInterface>()
-                .AddCurrencyBusinessLogic()
-                .BuildServiceProvider();
-
+            var serviceProvider = ContainerConfig.Configuration();
             var ui = serviceProvider.GetService<IUserInterface>();
             ui.Run();
         }
