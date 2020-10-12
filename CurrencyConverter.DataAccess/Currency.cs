@@ -1,5 +1,4 @@
-﻿using CurrencyConverter.Interfaces;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.Globalization;
@@ -8,7 +7,7 @@ using System.Xml.Serialization;
 namespace CurrencyConverter.DataAccess
 {
     [XmlType("pozycja")]
-    public class Currency : ICurrency
+    public class Currency
     {
         [XmlElement("kod_waluty")]
         public string Id { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CurrencyConverter.DataAccess;
+using System.Collections.Generic;
 
 namespace CurrencyConverter.BusinessLogic
 {
@@ -7,7 +8,7 @@ namespace CurrencyConverter.BusinessLogic
         private readonly IRepository<Currency> _currencyRepository;
         private readonly IConverter _converter;
 
-        public CurrencyBusinessLogic(IRepository<ICurrency> currencyRepository, IConverter converter)
+        public CurrencyBusinessLogic(IRepository<Currency> currencyRepository, IConverter converter)
         {
             _currencyRepository = currencyRepository;
             _converter = converter;
@@ -15,8 +16,8 @@ namespace CurrencyConverter.BusinessLogic
 
         public decimal ConvertCurrency(decimal amount, string fromCurrencyId, string toCurrencyId)
         {
-            ICurrency fromCurrency;
-            ICurrency toCurrency;
+            Currency fromCurrency;
+            Currency toCurrency;
 
             try
             {
@@ -33,7 +34,7 @@ namespace CurrencyConverter.BusinessLogic
                 toCurrency.ExchangeRate, toCurrency.ConversionFactor);
         }
 
-        public IEnumerable<ICurrency> GetAllCurrencies()
+        public IEnumerable<Currency> GetAllCurrencies()
         {
             try
             {
