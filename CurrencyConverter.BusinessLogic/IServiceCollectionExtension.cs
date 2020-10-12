@@ -6,7 +6,7 @@ namespace CurrencyConverter.BusinessLogic
     {
         public static IServiceCollection AddCurrencyConverter(this IServiceCollection services)
         {
-            services.AddTransient<IConverterService, ConverterService>();
+            services.AddTransient<IConverter, Converter>();
             return services;
         }
     }

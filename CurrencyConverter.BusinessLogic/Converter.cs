@@ -1,9 +1,17 @@
-﻿using System;
+﻿using CurrencyConverter.DataAccess.Repositories;
+using System;
 
 namespace CurrencyConverter.BusinessLogic
 {
-    public class ConverterService : IConverterService
+    class Converter : IConverter
     {
+        private readonly ICurrencyRepository _currencyRepository;
+
+        public Converter(ICurrencyRepository currencyRepository)
+        {
+            _currencyRepository = currencyRepository;
+        }
+
         public decimal Convert(decimal amount,
             decimal exchangeRate1, int conversionFactor1,
             decimal exchangeRate2, int conversionFactor2)

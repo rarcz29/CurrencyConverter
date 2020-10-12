@@ -1,20 +1,18 @@
 ﻿using CurrencyConverter.BusinessLogic;
-using CurrencyConverter.DataAccess.Entities;
-using CurrencyConverter.DataAccess.Repositories;
+//using CurrencyConverter.DataAccess.Entities;
+//using CurrencyConverter.DataAccess.Repositories;
 using System;
-using System.Net;
 using System.Text;
 
 namespace CurrencyConverter.UserInterface
 {
     class UserInterface : IUserInterface
     {
-        private readonly ICurrencyRepository _data;
-        private readonly IConverterService _converterService;
+        //private readonly ICurrencyRepository _data;
+        private readonly IConverter _converterService;
 
-        public UserInterface(ICurrencyRepository currencyRepository, IConverterService converterService)
+        public UserInterface(IConverter converterService)
         {
-            _data = currencyRepository;
             _converterService = converterService;
             Console.OutputEncoding = Encoding.UTF8;
         }
@@ -47,12 +45,12 @@ namespace CurrencyConverter.UserInterface
 
         private void PrintCurrencyNamesWithCodes()
         {
-            var currencies = _data.GetAll();
+            //var currencies = _data.GetAll();
 
-            foreach (var currency in currencies)
-            {
-                Console.WriteLine($"{currency.Name} (kod: {currency.Id})");
-            }
+            //foreach (var currency in currencies)
+            //{
+            //    Console.WriteLine($"{currency.Name} (kod: {currency.Id})");
+            //}
         }
 
         private string ReadCurrencyCode(string message)
