@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CurrencyConverter.DataAccess
 {
-    class DataProvider : IDataProvider
+    public class DataProvider : IDataProvider
     {
         /// <exception cref="System.Web.WebException">
         /// Thrown when there is no internet connection

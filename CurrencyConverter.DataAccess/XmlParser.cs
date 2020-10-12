@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace CurrencyConverter.DataAccess
 {
-    class XmlParser<T> : IParser<T>
+    public class XmlParser<T> : IParser<T>
     {
         public IEnumerable<T> Parse(string data, string tableName)
         {

@@ -1,5 +1,4 @@
 ﻿using CurrencyConverter.DataAccess;
-using CurrencyConverter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CurrencyConverter.BusinessLogic
@@ -9,8 +8,10 @@ namespace CurrencyConverter.BusinessLogic
         public static IServiceCollection AddCurrencyBusinessLogic(this IServiceCollection services)
         {
             return services
-                .AddTransient<IConverter, Converter>()
-                .AddXmlDataConnector();
+                .AddTransient<IDataProvider, DataProvider>()
+                .AddTransient(typeof(IParser<>), typeof(XmlParser<>))
+                .AddSingleton<IRepository<Currency>, CurrencyRepository>()
+                .AddTransient<IConverter, Converter>();
         }
     }
 }
