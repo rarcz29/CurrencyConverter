@@ -45,6 +45,8 @@ namespace CurrencyConverter.Presentation
             {
                 Console.WriteLine("Wystąpił błąd podczas przeliczania waluty. Aplikacja zostanie zamknięta");
             }
+
+            Console.ReadKey();
         }
 
         private void DownloadData()
@@ -102,7 +104,7 @@ namespace CurrencyConverter.Presentation
 
         private bool ReadAmountOfMoney(out decimal amountOfMoney)
         {
-            Console.WriteLine("Podaj kwotę (część ułamkową odziel kropką)");
+            Console.WriteLine("Podaj kwotę (część ułamkową oddziel kropką)");
             var amount = Console.ReadLine();
 
             try

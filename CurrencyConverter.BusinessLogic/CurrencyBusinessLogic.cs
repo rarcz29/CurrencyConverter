@@ -9,6 +9,17 @@ namespace CurrencyConverter.BusinessLogic
         private readonly IRepository<Currency> _currencyRepository;
         private readonly IConverter _converter;
 
+        private Currency Pln
+        {
+            get => new Currency
+            {
+                Name = "złoty (Polska)",
+                Id = "PLN",
+                ExchangeRate = 1M,
+                ConversionFactor = 1
+            };
+        }
+
         public CurrencyBusinessLogic(IRepository<Currency> currencyRepository, IConverter converter)
         {
             _currencyRepository = currencyRepository;
@@ -34,8 +45,8 @@ namespace CurrencyConverter.BusinessLogic
 
             try
             {
-                var fromCurrency = _currencyRepository.Get(fromCurrencyId);
-                var toCurrency = _currencyRepository.Get(toCurrencyId);
+                var fromCurrency = GetIncludingPln(fromCurrencyId);
+                var toCurrency = GetIncludingPln(toCurrencyId);
 
                 return _converter.Convert(amount,
                     fromCurrency.ExchangeRate, fromCurrency.ConversionFactor,
@@ -51,15 +62,13 @@ namespace CurrencyConverter.BusinessLogic
         {
             try
             {
-                var currencies = _currencyRepository.GetAll();
+                var currencies = GetAllIncludingPln();
                 var currencyNamesAndCodes = new List<(string Name, string)>();
 
                 foreach (var currency in currencies)
                 {
                     currencyNamesAndCodes.Add((currency.Name, currency.Id));
                 }
-
-                currencyNamesAndCodes.Add(("złoty (Polska)", "PLN"));
 
                 return currencyNamesAndCodes.OrderBy(c => c.Name);
             }
@@ -75,7 +84,40 @@ namespace CurrencyConverter.BusinessLogic
 
             try
             {
-                return _currencyRepository.Get(code) != null;
+                return GetIncludingPln(code) != null;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        private IEnumerable<Currency> GetAllIncludingPln()
+        {
+            try
+            {
+                var currencies = _currencyRepository.GetAll().ToList();
+                currencies.Add(Pln);
+                return currencies;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        private Currency GetIncludingPln(string code)
+        {
+            var pln = Pln;
+
+            if (code == pln.Id)
+            {
+                return pln;
+            }
+
+            try
+            {
+                return _currencyRepository.Get(code);
             }
             catch
             {
