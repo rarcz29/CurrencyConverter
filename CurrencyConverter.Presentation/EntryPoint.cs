@@ -1,14 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CurrencyConverter.BusinessLogic;
+using CurrencyConverter.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace CurrencyConverter.UserInterface
+namespace CurrencyConverter.Presentation
 {
     class EntryPoint
     {
         static void Main()
         {
-            //var serviceProvider = IocInitializer.Setup(); // Setup dependency injection
-            //var ui = serviceProvider.GetService<IUserInterface>(); // Get ui service
-            //ui.Run(); // Run ui
+            // Setup dependency injection
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IUserInterface, UserInterface>()
+                .AddCurrencyBusinessLogic()
+                .BuildServiceProvider();
+
+            var ui = serviceProvider.GetService<IUserInterface>(); // Get ui service
+            ui.Run(); // Run ui
         }
     }
 }

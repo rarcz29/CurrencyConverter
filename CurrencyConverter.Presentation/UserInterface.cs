@@ -1,10 +1,7 @@
-﻿using CurrencyConverter.BusinessLogic;
-//using CurrencyConverter.DataAccess.Entities;
-//using CurrencyConverter.DataAccess.Repositories;
+﻿using CurrencyConverter.Interfaces;
 using System;
-using System.Text;
 
-namespace CurrencyConverter.UserInterface
+namespace CurrencyConverter.Presentation
 {
     public class UserInterface : IUserInterface
     {

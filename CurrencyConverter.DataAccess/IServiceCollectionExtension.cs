@@ -1,7 +1,4 @@
-﻿using CurrencyConverter.DataAccess.Entities;
-using CurrencyConverter.DataAccess.Repositories;
-using CurrencyConverter.DataAccess.Services;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace CurrencyConverter.DataAccess
 {
