@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 namespace CurrencyConverter.DataAccess.Entities
 {
     [XmlType("pozycja")]
-    public class Currency
+    public class Currency : ICurrency
     {
         [XmlElement("kod_waluty")]
         public string Id { get; set; }
