@@ -46,7 +46,7 @@ namespace CurrencyConverter.BusinessLogic
 
         public IEnumerable<(string Name, string Code)> GetCurrencyNamesAndCodes()
         {
-            List<(string, string)> currencyNamesAndCodes = new List<(string, string)>();
+            List<(string Name, string)> currencyNamesAndCodes = new List<(string, string)>();
             IEnumerable<Currency> currencies;
 
             try
@@ -70,7 +70,9 @@ namespace CurrencyConverter.BusinessLogic
                 currencyNamesAndCodes.Add((currency.Name, currency.Id));
             }
 
-            return currencyNamesAndCodes;
+            currencyNamesAndCodes.Add(("złoty (Polska)", "PLN"));
+
+            return currencyNamesAndCodes.OrderBy(c => c.Name);
         }
     }
 }
