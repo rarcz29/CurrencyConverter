@@ -1,5 +1,4 @@
 ﻿using CurrencyConverter.BusinessLogic;
-using CurrencyConverter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CurrencyConverter.Presentation

@@ -1,4 +1,5 @@
 ﻿using CurrencyConverter.BusinessLogic;
+using System;
 
 namespace CurrencyConverter.Presentation
 {
@@ -13,6 +14,12 @@ namespace CurrencyConverter.Presentation
 
         public void Run()
         {
+            var availableCurrencies = _currencyBusinessLogic.GetCurrencyNamesAndCodes();
+
+            foreach (var currency in availableCurrencies)
+            {
+                Console.WriteLine($"{currency.Name} (kod: {currency.Code})");
+            }
         }
     }
 }
