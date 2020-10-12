@@ -6,15 +6,15 @@ using System.Text;
 
 namespace CurrencyConverter.UserInterface
 {
-    class UserInterface : IUserInterface
+    public class UserInterface : IUserInterface
     {
-        //private readonly ICurrencyRepository _data;
-        private readonly IConverter _converterService;
+        ////private readonly ICurrencyRepository _data;
+        //private readonly IConverter _converterService;
 
-        public UserInterface(IConverter converterService)
-        {
-            _converterService = converterService;
-            Console.OutputEncoding = Encoding.UTF8;
+        //public UserInterface(IConverter converterService)
+        //{
+        //    _converterService = converterService;
+        //    Console.OutputEncoding = Encoding.UTF8;
         }
 
         public void Run()

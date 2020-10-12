@@ -1,14 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CurrencyConverter.BusinessLogic\CurrencyConverter.BusinessLogic.csproj" />
-    <ProjectReference Include="..\CurrencyConverter.DataAccess\CurrencyConverter.DataAccess.csproj" />
     <ProjectReference Include="..\CurrencyConverter.Interfaces\CurrencyConverter.Interfaces.csproj" />
-    <ProjectReference Include="..\CurrencyConverter.UserInterface\CurrencyConverter.UserInterface.csproj" />
   </ItemGroup>
 
 </Project>

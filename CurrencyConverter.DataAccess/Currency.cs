@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CurrencyConverter.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.Globalization;
 using System.Xml.Serialization;
 
-namespace CurrencyConverter.DataAccess.Entities
+namespace CurrencyConverter.DataAccess
 {
     [XmlType("pozycja")]
     public class Currency : ICurrency

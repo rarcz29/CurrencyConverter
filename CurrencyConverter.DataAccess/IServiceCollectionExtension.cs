@@ -1,4 +1,5 @@
-﻿using CurrencyConverter.DataAccess.Repositories;
+﻿using CurrencyConverter.DataAccess.Entities;
+using CurrencyConverter.DataAccess.Repositories;
 using CurrencyConverter.DataAccess.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,7 +11,7 @@ namespace CurrencyConverter.DataAccess
         {
             services.AddTransient<IDataProvider, DataProvider>()
                     .AddTransient(typeof(IParser<>), typeof(XmlParser<>))
-                    .AddSingleton<ICurrencyRepository, CurrencyRepository>();
+                    .AddSingleton<IRepository<ICurrency>, CurrencyRepository>();
 
             return services;
         }

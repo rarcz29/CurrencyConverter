@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace CurrencyConverter.DataAccess.Repositories
+namespace CurrencyConverter.Interfaces
 {
     public interface IRepository<T>
     {
-        T Get(object id);
+        T Get(string id);
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAllSavedData();
         T GetSavedData(string id);

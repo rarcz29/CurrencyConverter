@@ -1,19 +1,18 @@
-﻿using CurrencyConverter.DataAccess.Entities;
-using CurrencyConverter.DataAccess.Services;
+﻿using CurrencyConverter.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CurrencyConverter.DataAccess.Repositories
+namespace CurrencyConverter.DataAccess
 {
-    public class CurrencyRepository : ICurrencyRepository
+    public class CurrencyRepository : IRepository<ICurrency>
     {
         private const string _TableName = "tabela_kursow";
         private readonly IDataProvider _dataProvider;
-        private readonly IParser<Currency> _xmlParser;
-        private IEnumerable<Currency> _savedData;
+        private readonly IParser<ICurrency> _xmlParser;
+        private IEnumerable<ICurrency> _savedData;
 
-        public CurrencyRepository(IDataProvider dataProvider, IParser<Currency> xmlParser)
+        public CurrencyRepository(IDataProvider dataProvider, IParser<ICurrency> xmlParser)
         {
             _dataProvider = dataProvider;
             _xmlParser = xmlParser;
@@ -29,9 +28,9 @@ namespace CurrencyConverter.DataAccess.Repositories
         /// <exception cref="System.NotSupportedException">
         /// Thrown when the GetResponseStream method is not supported
         /// </exception>
-        public IEnumerable<Currency> GetAll()
+        public IEnumerable<ICurrency> GetAll()
         {
-            IEnumerable<Currency> allElements;
+            IEnumerable<ICurrency> allElements;
 
             try
             {
@@ -56,9 +55,9 @@ namespace CurrencyConverter.DataAccess.Repositories
         /// <exception cref="System.NotSupportedException">
         /// Thrown when the GetResponseStream method is not supported
         /// </exception>
-        public Currency Get(string id)
+        public ICurrency Get(string id)
         {
-            IEnumerable<Currency> allElements;
+            IEnumerable<ICurrency> allElements;
 
             try
             {
@@ -80,7 +79,7 @@ namespace CurrencyConverter.DataAccess.Repositories
         /// <exception cref="System.NullReferenceException">
         /// Thrown when data is null
         /// </exception>
-        public IEnumerable<Currency> GetAllSavedData()
+        public IEnumerable<ICurrency> GetAllSavedData()
         {
             try
             {
@@ -99,7 +98,7 @@ namespace CurrencyConverter.DataAccess.Repositories
         /// <exception cref="System.NullReferenceException">
         /// Thrown when data is null
         /// </exception>
-        public Currency GetSavedData(string id)
+        public ICurrency GetSavedData(string id)
         {
             try
             {
@@ -121,7 +120,7 @@ namespace CurrencyConverter.DataAccess.Repositories
         /// <exception cref="System.NotSupportedException">
         /// Thrown when the GetResponseStream method is not supported
         /// </exception>
-        private IEnumerable<Currency> GetAllElements()
+        private IEnumerable<ICurrency> GetAllElements()
         {
             string dataAsString;
 
@@ -147,6 +146,6 @@ namespace CurrencyConverter.DataAccess.Repositories
             }
         }
 
-        private IEnumerable<Currency> SaveData(IEnumerable<Currency> data) => _savedData = data;
+        private IEnumerable<ICurrency> SaveData(IEnumerable<ICurrency> data) => _savedData = data;
     }
 }

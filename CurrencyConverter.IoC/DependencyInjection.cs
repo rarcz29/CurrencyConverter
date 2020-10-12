@@ -1,10 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CurrencyConverter.BusinessLogic;
+using CurrencyConverter.DataAccess;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CurrencyConverter.IoC
 {
     class DependencyInjection
     {
-        public ServiceProvider AppServiceProvider { get; set; }
+        public ServiceProvider AppServiceProvider { get; private set; }
 
         public DependencyInjection()
         {
@@ -16,8 +18,9 @@ namespace CurrencyConverter.IoC
             var serviceProvider = new ServiceCollection()
                 .AddXmlDataConnector()
                 .AddCurrencyConverter()
-                .AddSingleton<IUserInterface, UserInterface>()
                 .BuildServiceProvider();
+
+            AppServiceProvider = serviceProvider;
         }
     }
 }

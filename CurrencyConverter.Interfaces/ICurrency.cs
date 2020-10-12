@@ -1,4 +1,4 @@
-﻿namespace CurrencyConverter.DataAccess.Entities
+﻿namespace CurrencyConverter.Interfaces
 {
     public interface ICurrency
     {
