@@ -1,19 +1,51 @@
-﻿using CurrencyConverter.DataAccess.Repositories;
-using System.Collections;
+﻿using CurrencyConverter.DataAccess.Entities;
+using CurrencyConverter.DataAccess.Repositories;
+using System.Collections.Generic;
 
 namespace CurrencyConverter.BusinessLogic
 {
     class CurrencyBusinessLogic
     {
-        private readonly ICurrencyRepository _currencyRepository;
-        private readonly Converter _converter;
+        private readonly IRepository<ICurrency> _currencyRepository;
+        private readonly IConverter _converter;
 
-        public CurrencyBusinessLogic(ICurrencyRepository currencyRepository, Converter converter)
+        public CurrencyBusinessLogic(IRepository<ICurrency> currencyRepository, IConverter converter)
         {
             _currencyRepository = currencyRepository;
             _converter = converter;
         }
 
-        public IEnumerable<I>
+        public decimal ConvertCurrency(decimal amount, string fromCurrencyId, string toCurrencyId)
+        {
+            ICurrency fromCurrency;
+            ICurrency toCurrency;
+
+            try
+            {
+                fromCurrency = _currencyRepository.Get(fromCurrencyId);
+                toCurrency = _currencyRepository.Get(toCurrencyId);
+            }
+            catch
+            {
+                throw;
+            }
+            
+
+            return _converter.Convert(amount, fromCurrency.ExchangeRate, fromCurrency.ConversionFactor,
+                toCurrency.ExchangeRate, toCurrency.ConversionFactor);
+        }
+
+        public IEnumerable<ICurrency> GetAllCurrencies()
+        {
+            try
+            {
+                var allCurrencies = _currencyRepository.GetAll();
+                return allCurrencies;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
