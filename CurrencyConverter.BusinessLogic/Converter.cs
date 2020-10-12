@@ -16,12 +16,12 @@ namespace CurrencyConverter.BusinessLogic
 
         private decimal ConvertToPln(decimal amount, decimal exchangeRate, int conversionFactor)
         {
-            return amount / exchangeRate * conversionFactor;
+            return amount * exchangeRate / conversionFactor;
         }
 
         private decimal ConvertFromPln(decimal amount, decimal exchangeRate, int conversionFactor)
         {
-            return amount * exchangeRate / conversionFactor;
+            return amount / exchangeRate * conversionFactor;
         }
     }
 }

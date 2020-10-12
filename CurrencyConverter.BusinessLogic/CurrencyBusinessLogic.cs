@@ -29,6 +29,9 @@ namespace CurrencyConverter.BusinessLogic
 
         public decimal ConvertCurrency(decimal amount, string fromCurrencyId, string toCurrencyId)
         {
+            fromCurrencyId = fromCurrencyId.ToUpper();
+            toCurrencyId = toCurrencyId.ToUpper();
+
             try
             {
                 var fromCurrency = _currencyRepository.Get(fromCurrencyId);
@@ -68,7 +71,16 @@ namespace CurrencyConverter.BusinessLogic
 
         public bool CheckIfCurrencyExists(string code)
         {
-            return _currencyRepository.Get(code) != null;
+            code = code.ToUpper();
+
+            try
+            {
+                return _currencyRepository.Get(code) != null;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

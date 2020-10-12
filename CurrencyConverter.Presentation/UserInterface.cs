@@ -1,7 +1,5 @@
 ﻿using CurrencyConverter.BusinessLogic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace CurrencyConverter.Presentation
 {
@@ -17,57 +15,36 @@ namespace CurrencyConverter.Presentation
         public void Run()
         {
             DownloadData();
+            WriteCurrencyNamesAndCodes();
+            NewLine();
 
-            //decimal result = 0M;
-            //List<string> currencyCodes;
+            if (!ReadCurrencyCode("Podaj walutę początkową", out string fromCurrencyCode) ||
+                !ReadCurrencyCode("Podaj walutę końcową", out string toCurrencyCode))
+            {
+                Console.WriteLine("Podano nieistniejącą walutę. Aplikacja zostanie zamknięta.");
+                CloseApp();
+                return;
+            }
 
-            //try
-            //{
-            //    var availableCurrencies = _currencyBusinessLogic.GetCurrencyNamesAndCodes();
+            NewLine();
 
-            //    foreach (var currency in availableCurrencies)
-            //    {
-            //        Console.WriteLine($"{currency.Name} (kod: {currency.Code})");
-            //    }
+            if (!ReadAmountOfMoney(out decimal amount))
+            {
+                Console.WriteLine("Podano niepoprawne dane. Aplikacja zostanie zamknięta.");
+                CloseApp();
+            }
 
-            //    currencyCodes = availableCurrencies.Select(c => c.Code).ToList();
-            //}
-            //catch
-            //{
-            //    Console.WriteLine("Nie udało się pobrać danych. Sprawdź swoje połączenie internetowe");
-            //    return;
-            //}
+            NewLine();
 
-            //Console.WriteLine("Podaj walutę początkową");
-            //var fromCurrency = Console.ReadLine();
-
-            //if (!CheckIfCurrencyExists(fromCurrency, currencyCodes))
-            //{
-            //    ExitWrongCurrencyCode();
-            //}
-
-            //Console.WriteLine("Podaj walutę końcową");
-            //var toCurrency = Console.ReadLine();
-
-            //if (!CheckIfCurrencyExists(toCurrency, currencyCodes))
-            //{
-            //    ExitWrongCurrencyCode();
-            //}
-
-            //Console.WriteLine("Podaj kwotę (część ułamkową odziel kropką)");
-            //var amount = Console.ReadLine();
-
-            //try
-            //{
-            //    var parsedAmount = Decimal.Parse(amount);
-            //    result = _currencyBusinessLogic.ConvertCurrency(parsedAmount, fromCurrency, toCurrency);
-            //}
-            //catch
-            //{
-            //    Console.WriteLine("Nie udało się obliczyć wartości");
-            //}
-
-            //Console.WriteLine($"Obliczona wartość to: {result}");
+            try
+            {
+                var result = _currencyBusinessLogic.ConvertCurrency(amount, fromCurrencyCode, toCurrencyCode);
+                Console.WriteLine($"Wynik to {result} {toCurrencyCode}");
+            }
+            catch
+            {
+                Console.WriteLine("Wystąpił błąd podczas przeliczania waluty. Aplikacja zostanie zamknięta");
+            }
         }
 
         private void DownloadData()
@@ -81,15 +58,71 @@ namespace CurrencyConverter.Presentation
                 Console.WriteLine("Nie udało się pobrać danych. " +
                     "Sprawdź swoje połączenie internetowe. " +
                     "Aplikacja zostanie zamknięta.");
+
+                CloseApp();
+            }
+        }
+
+        private void WriteCurrencyNamesAndCodes()
+        {
+            try
+            {
+                var availableCurrencies = _currencyBusinessLogic.GetCurrencyNamesAndCodes();
+
+                foreach (var currency in availableCurrencies)
+                {
+                    Console.WriteLine($"{currency.Name} (kod: {currency.Code})");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Nie udało się odczytać danych. Aplikacja zostanie zamknięta.");
+                CloseApp();
             }
         }
 
         /// <returns>true if currency exists</returns>
-        private bool ReadCurrencyCode(string message)
+        private bool ReadCurrencyCode(string message, out string code)
         {
             Console.WriteLine(message);
-            var currencyCode = Console.ReadLine();
-            return _currencyBusinessLogic.CheckIfCurrencyExists(currencyCode);
+            code = Console.ReadLine();
+
+            try
+            {
+                return _currencyBusinessLogic.CheckIfCurrencyExists(code);
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("Brak zapisanych danych. " +
+                    "Aplikacja zostanie zamknięta.");
+                CloseApp();
+                return false;
+            }
         }
+
+        private bool ReadAmountOfMoney(out decimal amountOfMoney)
+        {
+            Console.WriteLine("Podaj kwotę (część ułamkową odziel kropką)");
+            var amount = Console.ReadLine();
+
+            try
+            {
+                amountOfMoney = Decimal.Parse(amount);
+                return true;
+            }
+            catch
+            {
+                amountOfMoney = 0M;
+                return false;
+            }
+        }
+
+        private void CloseApp()
+        {
+            Console.ReadKey();
+            Environment.Exit(1);
+        }
+
+        private void NewLine() => Console.WriteLine();
     }
 }
