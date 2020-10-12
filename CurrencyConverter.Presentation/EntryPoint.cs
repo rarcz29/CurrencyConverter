@@ -14,8 +14,8 @@ namespace CurrencyConverter.Presentation
                 .AddCurrencyBusinessLogic()
                 .BuildServiceProvider();
 
-            var ui = serviceProvider.GetService<IUserInterface>(); // Get ui service
-            ui.Run(); // Run ui
+            var ui = serviceProvider.GetService<IUserInterface>();
+            ui.Run();
         }
     }
 }
