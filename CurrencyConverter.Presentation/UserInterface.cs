@@ -39,7 +39,7 @@ namespace CurrencyConverter.Presentation
             try
             {
                 var result = _currencyBusinessLogic.ConvertCurrency(amount, fromCurrencyCode, toCurrencyCode);
-                Console.WriteLine($"Wynik to {result} {toCurrencyCode}");
+                Console.WriteLine($"Wynik to {result} {toCurrencyCode.ToUpper()}");
             }
             catch
             {
