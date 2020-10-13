@@ -105,6 +105,6 @@ namespace CurrencyConverter.DataAccess
             }
         }
 
-        private IEnumerable<Currency> SaveData(IEnumerable<Currency> data) => _savedData = data;
+        private void SaveData(IEnumerable<Currency> data) => _savedData = data;
     }
 }
