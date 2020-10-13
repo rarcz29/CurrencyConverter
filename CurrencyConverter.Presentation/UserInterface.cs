@@ -18,8 +18,8 @@ namespace CurrencyConverter.Presentation
             WriteCurrencyNamesAndCodes();
             NewLine();
 
-            if (!ReadCurrencyCode("Podaj walutę początkową", out string fromCurrencyCode) ||
-                !ReadCurrencyCode("Podaj walutę końcową", out string toCurrencyCode))
+            if (!ReadCurrencyCode("Podaj walutę początkową (kod waluty)", out string fromCurrencyCode) ||
+                !ReadCurrencyCode("Podaj walutę końcową (kod waluty)", out string toCurrencyCode))
             {
                 Console.WriteLine("Podano nieistniejącą walutę. Aplikacja zostanie zamknięta.");
                 CloseApp();
